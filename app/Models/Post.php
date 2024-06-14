@@ -9,6 +9,11 @@ class Post extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+    
     public function getByLimit(int $limit_count = 10)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
@@ -19,6 +24,6 @@ class Post extends Model
     public function getPaginateByLimit(int $limit_count = 10)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
-        return $this->orderBy('id', 'ASC')->paginate($limit_count);
+        return $this->orderBy('id', 'DESC')->paginate($limit_count);
     }
 }
